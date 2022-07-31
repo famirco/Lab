@@ -1,6 +1,6 @@
 
 
-  git add filename
+  git add -A
   git commit -m "descriptions"
   git push origin main
   
