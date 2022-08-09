@@ -1,11 +1,15 @@
 #!/usr/bin/bash
 
+#change to main directory
+sudo rm -rf /myproject
+sudo mkdir /myproject
+cd /myproject
 
 #install the HashiCorp GPG key.
-wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+sudo wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 #add the official HashiCorp repository to your system.
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 #update repositories
 sudo apt update -y
@@ -45,19 +49,22 @@ fi
 
 #install virtualbox for vagrant
 if ! vboxmanage -h 2&> /dev/null; then
-  apt install -y virtualbox
+ sudo apt install -y virtualbox
 fi
 
 #install vagrant
 if ! vagrant -h 2&> /dev/null; then
-  apt install -y vagrant
+  sudo apt install -y vagrant
 fi
 
-#download and Install the package information from HashiCorp.
+#install terraform
 sudo apt-get install -y terraform
 
 #install the autocomplete package.
-terraform -install-autocomplete
+sudo terraform -install-autocomplete
+
+#install ansible
+sudo apt install ansible
 
 #create main file terraform
 touch main.tf
@@ -67,6 +74,4 @@ touch main.tf
 
 
 
-#change to main directory
-mkdir /myproject
-cd /myproject
+
