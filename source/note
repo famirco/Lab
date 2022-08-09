@@ -39,3 +39,13 @@ output "IPAddr" {
 output "IPAddr_2" {
   value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 2)
 }
+
+
+
+
+#################
+
+
+#install HashiCorp's Debian package repository.
+sudo apt-get install -y gnupg software-properties-common
+##################
