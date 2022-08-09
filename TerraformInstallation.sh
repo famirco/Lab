@@ -66,8 +66,65 @@ sudo terraform -install-autocomplete
 #install ansible
 sudo apt install ansible
 
-#create main file terraform
-touch main.tf
+#
+vagrant box add ubuntu/focal64
+
+#hard add config to terraform file
+echo 'terraform {
+  required_providers {
+    vagrant = {
+      source  = "bmatcuk/vagrant"
+      version = "~> 4.0.0"
+    }
+  }
+}
+
+resource "vagrant_vm" "my_vagrant_vm" {
+  env = {
+    # force terraform to re-run vagrant if the Vagrantfile changes
+    VAGRANTFILE_HASH = md5(file("./Vagrantfile")),
+  }
+  get_ports = true
+  # see schema for additional options
+}' > main.tf
+
+
+
+echo 'Vagrant.configure("2") do |config|
+    config.vm.box = "ubuntu/focal64"
+    config.vm.network "forwarded_port", guest: 22, host: 221
+  
+    config.vm.provider "VirtualBoxe" do |vb|
+    end
+  
+    config.vm.define "master" do |master|
+      master.vm.box = "ubuntu/focal64"
+      master.vm.hostname = "master"
+      master.vm.provider :VirtualBox do |v|
+        v.customize ['modifyvm', :id, '--memory', '2048']
+        v.customize ['modifyvm', :id, '--cpus', '2']
+      end
+    end
+    config.vm.define "slave1" do |slave1|
+      slave1.vm.box = "ubuntu/focal64"
+      slave1.vm.hostname = "slave1"
+      slave1.vm.provider :VirtualBox do |v|
+        v.customize ['modifyvm', :id, '--memory', '2048']
+        v.customize ['modifyvm', :id, '--cpus', '2']
+      end
+    end
+    config.vm.define "slave2" do |slave2|
+      slave2.vm.box = "ubuntu/focal64"
+      slave2.vm.hostname = "slave2"
+      slave2.vm.provider :VirtualBox do |v|
+        v.customize ['modifyvm', :id, '--memory', '2048']
+        v.customize ['modifyvm', :id, '--cpus', '2']
+      end
+    end
+  end' > Vagrantfile
+
+terraform init
+
 
 
 
