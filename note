@@ -4,6 +4,9 @@
   git commit -m "descriptions"
   git push origin main
   
+  git commit -a --allow-empty-message -m ''
+
+  
   vagrant global-status --prune
 
 
