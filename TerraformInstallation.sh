@@ -1,19 +1,19 @@
 #!/usr/bin/bash
 
-sudo rm -rf Myproject
-sudo mkdir Myproject
+#sudo rm -rf Myproject
+#sudo mkdir Myproject
 
 
-if ls Myproject 1>/dev/null; then
-  echo '.**######################################################################################**.'
-  echo '############### Myproject directory has been created successfully.'
-  else
-  echo '.**######################################################################################**.'
-  echo '############### WE can not create directory.'
-  exit 1
-fi
+#if ls Myproject 1>/dev/null; then
+#  echo '.**######################################################################################**.'
+#  echo '############### Myproject directory has been created successfully.'
+#  else
+#  echo '.**######################################################################################**.'
+#  echo '############### WE can not create directory.'
+#  exit 1
+#fi
 
-cd Myproject
+#cd Myproject
 
 #install the HashiCorp GPG key.
 if cat /usr/share/keyrings/hashicorp-archive-keyring.gpg 1>/dev/null 2>&1; then
@@ -133,6 +133,38 @@ vagrant init
 echo '.**######################################################################################**.'
 echo '############### vagrant init.'
 
+echo 'Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/focal64"
+#  config.vm.network "forwarded_port", guest: 22, host: 221
+
+  config.vm.provider "VirtualBoxe" do |vb|
+  end
+
+  config.vm.define "Master" do |Master|
+    Master.vm.box = "ubuntu/focal64"
+    Master.vm.hostname = "Master"
+    Master.vm.provider :VirtualBox do |v|
+      v.customize ['modifyvm', :id, '--memory', '2048']
+      v.customize ['modifyvm', :id, '--cpus', '2']
+    end
+  end
+  config.vm.define "Slave-1" do |Slave-1|
+    Slave-1.vm.box = "ubuntu/focal64"
+    Slave-1.vm.hostname = "Slave-1"
+    Slave-1.vm.provider :VirtualBox do |v|
+      v.customize ['modifyvm', :id, '--memory', '2048']
+      v.customize ['modifyvm', :id, '--cpus', '2']
+    end
+  end
+  config.vm.define "Slave-2" do |Slave-2|
+    Slave-2.vm.box = "ubuntu/focal64"
+    Slave-2.vm.hostname = "Slave-2"
+    Slave-2.vm.provider :VirtualBox do |v|
+      v.customize ['modifyvm', :id, '--memory', '2048']
+      v.customize ['modifyvm', :id, '--cpus', '2']
+    end
+  end
+end' > Vagrantfile
 
 terraform init
 echo '.**######################################################################################**.'
