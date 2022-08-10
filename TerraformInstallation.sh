@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+sudi rm Vagrantfile
 #sudo rm -rf Myproject
 #sudo mkdir Myproject
 
