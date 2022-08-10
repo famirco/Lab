@@ -1,17 +1,12 @@
 terraform {
   required_providers {
     vagrant = {
-      source  = "bmatcuk/vagrant"
-      version = "~> 4.0.0"
+      source = "lippertmarkus/vagrant"
+      version = "2.0.0"
     }
   }
 }
 
-resource "vagrant_vm" "my_vagrant_vm" {
-  env = {
-    # force terraform to re-run vagrant if the Vagrantfile changes
-    VAGRANTFILE_HASH = md5(file("./Vagrantfile")),
-  }
-  get_ports = true
-  # see schema for additional options
+provider "vagrant" {
+  source = "./Vagrantfile"
 }

@@ -159,10 +159,17 @@ echo 'Vagrant.configure("2") do |config|
         end
 end' > Vagrantfile
 
-terraform init
+terraform write
 echo '.**######################################################################################**.'
-echo '############### terraform init.'
+echo '############### terraform Write.'
 
+terraform plan
+echo '.**######################################################################################**.'
+echo '############### terraform Plan.'
+
+terraform apply
+echo '.**######################################################################################**.'
+echo '############### terraform Apply.'
 
 
 
