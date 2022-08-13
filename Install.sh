@@ -5,7 +5,7 @@ sudo apt update -y 1>/dev/null
 echo '############### Apt update completed successfully.###############'
 
 #Install Ansible
-sudo apt install -y python3 python3-pip ansible yamllint ansible-lint
+sudo apt install -y python3 python3-pip ansible yamllint ansible-lint 1>/dev/null   
 echo '############### Ansible installation completed successfully.###############'
 
 
