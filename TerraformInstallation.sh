@@ -29,3 +29,12 @@ sudo apt install -y ca-certificates gnupg lsb-release jq wget curl unzip docker-
 echo '############### ( ca-certificates, gnupg, lsb-release, jq, wget, curl, unzip, docker-ce, docker-ce-cli, containerd.io, docker-compose-plugin, terraform, ansible ) Installation Prerequisites completed successfully.###############'
 
 
+terraform init
+
+
+
+terraform plan
+
+terraform apply
+
+
