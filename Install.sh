@@ -9,7 +9,7 @@ sudo apt install -y ansible
 echo '############### Ansible installation completed successfully.###############'
 
 ansible_host=$(cat /etc/ansible/hosts | awk '{print $2}')
-if [ ! ansible_hos == 'ansible_host=127.0.0.1' ];then
+if [ ! ansible_host == 'ansible_host=127.0.0.1' ];then
     echo '[servers]
 server1 ansible_host=127.0.0.1
 
