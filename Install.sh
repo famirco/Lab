@@ -11,4 +11,4 @@ echo '############### Ansible installation completed successfully.##############
 
 
 
-ansible-playbook -i ansible-playbooks/hosts ansible-playbooks/ConfigureLocal.yml
+ansible-playbook -i ansible-files/hosts ansible-files/ConfigureLocal.yml
