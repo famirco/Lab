@@ -1,12 +1,26 @@
 terraform {
   required_providers {
-    vagrant = {
-      source = "lippertmarkus/vagrant"
-      version = "2.0.0"
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "2.20.0"
     }
   }
 }
 
-provider "vagrant" {
-  source = "./Vagrantfile"
+provider "docker" {
+  host = "unix:///var/run/docker.sock"
+}
+
+# Pulls the image
+resource "docker_image" "ubuntu" {
+  name = "ubuntu:latest"
+}
+resource "docker_image" "ubuntu" {
+  name = "ubuntu:latest"
+}
+
+# Create a container
+resource "docker_container" "foo" {
+  image = docker_image.ubuntu.latest
+  name  = "foo"
 }
