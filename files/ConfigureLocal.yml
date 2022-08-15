@@ -22,8 +22,13 @@
         state: latest
         install_recommends: yes
 
-
-- name: Basic deploy of a service
-  community.general.terraform:
-    project_path: './'
-    state: present
+- name: terraform
+   hosts: controlmachine
+   become: true
+   become_method: sudo
+   become_user: root
+   tasks:
+      - name: Basic deploy of a service
+        community.general.terraform:
+        project_path: './'
+        state: present
