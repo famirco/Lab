@@ -22,7 +22,7 @@
         state: latest
         install_recommends: yes
 
-- name: Basic deploy of a service
-  community.general.terraform:
-    project_path: './'
-    state: present
+    - name: run terraform
+      community.general.terraform:
+        project_path: './'
+        state: present
