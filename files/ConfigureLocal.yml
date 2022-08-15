@@ -23,7 +23,7 @@
         install_recommends: yes
 
 
-- terraform:
-    project_path: 'files/'
+- name: Basic deploy of a service
+  community.general.terraform:
+    project_path: './'
     state: present
-    force_init: true
