@@ -9,8 +9,6 @@ terraform {
 
 provider "docker" {
   host = "tcp://localhost:2376"
-  
-  ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
 }
 
 # Pulls the image
