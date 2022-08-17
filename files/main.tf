@@ -9,7 +9,7 @@ terraform {
 
 provider "docker" {
   host = "tcp://localhost:2376"
-  host = "ssh://user@remote-host:22"
+  
   ssh_opts = ["-o", "StrictHostKeyChecking=no", "-o", "UserKnownHostsFile=/dev/null"]
 }
 
@@ -20,6 +20,6 @@ resource "docker_image" "ubuntu" {
 
 # Create a container
 resource "docker_container" "test" {
-  image = ubuntu:latest
+  image = docker_image.ubuntu.latest
   name  = "test"
 }
