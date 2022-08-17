@@ -30,5 +30,6 @@
 
     - name: run terraform
       terraform:
+        force_init: true
         project_path: '/root/tmp/Lab/files'
         state: present
