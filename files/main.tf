@@ -19,5 +19,5 @@ resource "docker_image" "ubuntu" {
 # Create a container
 resource "docker_container" "test" {
   image = docker_image.ubuntu.latest
-  name  = "test-${count.index}"
+  name  = "test-1"
 }
