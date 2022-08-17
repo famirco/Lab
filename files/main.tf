@@ -2,7 +2,7 @@ terraform {
   required_providers {
     docker = {
       source  = "kreuzwerker/docker"
-      version = "2.20.0"
+      version = "2.20.2"
     }
   }
 }
@@ -17,7 +17,7 @@ resource "docker_image" "ubuntu" {
 }
 
 # Create a container
-resource "docker_container" "test" {
+resource "docker_container" "foo" {
   image = docker_image.ubuntu.latest
-  name  = "test"
+  name  = "foo"
 }
