@@ -15,5 +15,5 @@ echo '############### Ansible installation completed successfully.##############
 
 #ssh-copy-id root@127.0.0.1
 
-
+ansible-galaxy install abdennour.golang
 ansible-playbook -i files/hosts files/ConfigureLocal.yml
