@@ -4,7 +4,7 @@
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg 1>/dev/null
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list 1>/dev/null
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list 1>/dev/null
-
+sudo add-apt-repository ppa:longsleep/golang-backports
 
 sudo apt update -y 1>/dev/null
 echo '############### Add repo and Apt update completed successfully.###############'
@@ -15,5 +15,5 @@ echo '############### Ansible installation completed successfully.##############
 
 #ssh-copy-id root@127.0.0.1
 
-ansible-galaxy install abdennour.golang
+
 ansible-playbook -i files/hosts files/ConfigureLocal.yml
