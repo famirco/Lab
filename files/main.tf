@@ -12,7 +12,7 @@ provider "docker" {
 
 # Pulls the image
 resource "docker_image" "alpine" {
-  name = "alpine:3"
+  name = "alpine:latest"
   keep_locally = true
 }
 
