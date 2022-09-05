@@ -18,6 +18,6 @@ resource "docker_image" "alpine" {
 
 # Create a container
 resource "docker_container" "foo" {
-  image = alpine
+  image = "docker_image.alpine.latest"
   name  = "foo"
 }
