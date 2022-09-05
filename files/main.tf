@@ -8,16 +8,16 @@ terraform {
 }
 
 provider "docker" {
-  host = "unix:///var/run/docker.sock"
 }
 
 # Pulls the image
-resource "docker_image" "ubuntu" {
-  name = "ubuntu:latest"
+resource "docker_image" "alpine" {
+  name = "alpine:3"
+  keep_locally = true
 }
 
 # Create a container
 resource "docker_container" "foo" {
-  image = docker_image.ubuntu.latest
+  image = docker_image.alpine
   name  = "foo"
 }
